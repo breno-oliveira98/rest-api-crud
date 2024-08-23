@@ -27,3 +27,12 @@
 #ids {
     width: 205px;
 }
+
+.btns {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btns button {
+    width: 30%;
+}
