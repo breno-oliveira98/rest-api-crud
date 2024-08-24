@@ -39,9 +39,73 @@
             </div>
         </nav>
     </header>
-    <main>
-
+    
+    <main class="m-3">
+        <input id="ids" type="text" placeholder="Digite o id para buscar" class="form-control mb-3">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID Usuário</th>
+                    <th>ID</th>
+                    <th>Título</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody id="dataTableBody">
+                <!-- Linhas da tabela serão inseridas aqui -->
+            </tbody>
+        </table>
     </main>
+
+    <script>
+        function buscarUsuario() {
+
+
+            document.querySelector("#ids").addEventListener('input', function () {
+                const ids = this.value;
+                if (ids.trim() === "") {
+                    document.querySelector("#dataTableBody").innerHTML = "";
+                    return;
+                }
+
+                fetch(`https://jsonplaceholder.typicode.com/todos/${ids}`)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error("Usuário não encontrado");
+
+                        }
+                        return response.json();
+                    })
+                    .then(json => {
+                        if (json && json.id) {
+                            const dataTableBody = document.querySelector("#dataTableBody");
+                            dataTableBody.innerHTML =
+                                `
+                            <tr>
+                                <td>${json.userId}</td>
+                                <td>${json.id}</td>
+                                <td>${json.title}</td>
+                                <td>${json.completed}</td>
+                            </tr>
+                            `
+                        } else {
+                            alert('ID INVÁLIDO');
+                            document.querySelector('#dataTableBody').innerHTML = ''
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Erro ao buscar usuário', error)
+                        alert('Erro ao buscar o usuário');
+                        document.querySelector('#dataTableBody').innerHTML = ''
+                    });
+
+            })
+
+        }
+
+        buscarUsuario();
+
+    </script>
 
 
     <script src="assets/script.js"></script>
