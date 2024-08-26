@@ -28,3 +28,14 @@
     width: 205px;
 }
 
+<<<<<<< HEAD
+=======
+.btns {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btns button {
+    width: 30%;
+}
+>>>>>>> da1283f8cc062a05b346acd62967846d82a3b668
