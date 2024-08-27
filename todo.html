@@ -47,8 +47,9 @@
                     <th class="col-1">ID do Usuário</th>
                     <th class="col-1">ID</th>
                     <th class="col-2">Título</th>
-                    <th>Status</th>
-                    <th>Editar</th>
+                    <th class="col-1">Status</th>
+                    <th class="col-1">Editar</th>
+                    <th>Deletar</th>
                 </tr>
             </thead>
             <tbody id="dataTableBody">
@@ -57,7 +58,7 @@
         </table>
 
     </main>
-        <!-- Modal -->
+        <!-- Modal Botão Editar -->
     <div class="modal" id="exampleModal" tabindex="-1">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -86,16 +87,53 @@
                 </table>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-primary">Salvar alterações</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
             </div>
           </div>
         </div>
       </div>
 
+              <!-- Modal Botão Deletar -->
+    <div class="modal" id="exampleModal2" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" >Deletar</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <table class="table">
+                    <thead>
+
+                    </thead>
+                    <tbody id="dataTableBody">
+                        <!-- Linhas da tabela serão inseridas aqui -->
+                        <tr>
+                            <th class="col-1">ID do Usuário:</th>
+                            
+                        </tr>
+                        <tr>
+                            <th class="col-1">ID</th>
+                        </tr>
+                        <tr>
+                            <th class="col-2">Título</th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger">Deletar</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+<!-- Script -->
     <script>
 
         const btnEditar = `<button type="button" class="btn btn-warning text-light" data-bs-toggle="modal" data-bs-target="#exampleModal">Editar</button>`
+        const btnDeletar = `<button type="button" class="btn btn-danger text-light" data-bs-toggle="modal" data-bs-target="#exampleModal2">Deletar</button>`
 
 
         function buscarTodos() {
@@ -127,6 +165,8 @@
                                 <td>${json.title}</td>
                                 <td>${json.completed}</td>
                                 <td>${btnEditar}</td>
+                                <td>${btnDeletar}</td>
+                                
                             </tr>       
                             `
                         } else {
