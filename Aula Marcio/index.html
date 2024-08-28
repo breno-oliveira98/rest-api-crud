@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -43,7 +43,22 @@
         console.log(alunosFiltrados)
 
         // DECIMAIS FLOAT
+        // REDUCE (modelo sem reduce)
         const valores = [12000.98, 10239.0, 9875.99];
+        let total = 0
+        valores.map((valor) => {
+            total += valor
+        })
+        console.log(total)
+
+        // REDUCE  > 1º parametro retorna o valor acumulado do array, 2º parametro retorna o valor da posição do 
+        const somaTotal = valores.reduce((valorAcumulado, valorDaPosicao) => {
+            console.log("Valor Acumulado", valorAcumulado);
+            console.log("Valor da Posição", valorDaPosicao);
+            return valorAcumulado + valorDaPosicao;
+        }, 0) //o zero adicionado após a chave é o parametro que define o valor acumulado inicial
+        // modelo do reduce com o valor inicial >  valores.reduce(() => {}, 0)
+        console.log(somaTotal);
         
     </script>
 </body>
