@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="lista">
+
+    </ul>
+
+    <script>
+        const alunos = ["Angelo", "Breno", "Gustavo", "João Roberto"]
+
+        // // FOR
+        for (let cont = 0; cont < alunos.length; cont++) {
+            console.log(alunos[cont])
+        }
+
+        // ForEach
+        // primeiro parametro é o valor do array, segundo parametro é o indice do array, terceiro parametro é o array.
+        alunos.forEach((valorDoArray, IndiceDoArray, array) => {
+            console.log(IndiceDoArray + " - " + valorDoArray + " " + array) 
+            alert(IndiceDoArray + " - " + valorDoArray + " " + array)
+        })
+
+        // Map
+        let montagemHTML = '';
+        alunos.map((valor, posicao) => {
+            montagemHTML += `<li>${valor}</li>`
+        })
+
+        document.getElementById("lista").innerHTML = montagemHTML;
+        console.log(montagemHTML);
+
+        // Filter
+        const alunosFiltrados = alunos.filter((nome, posicao) => {
+            if(nome.length === 3) {
+                return nome;
+            }
+        })
+        console.log(alunosFiltrados)
+
+        // DECIMAIS FLOAT
+        const valores = [12000.98, 10239.0, 9875.99];
+        
+    </script>
+</body>
+</html>

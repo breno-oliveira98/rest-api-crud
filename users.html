@@ -58,9 +58,85 @@
         </table>
     </main>
 
-    <script>
-        function buscarUsuario() {
+    <!-- Modal Botão Editar -->
+    <div class="modal" id="exampleModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Editar</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <table class="table">
+                        <thead>
 
+                        </thead>
+                        <tbody id="dataTableBody">
+                            <!-- Linhas da tabela serão inseridas aqui -->
+                            <tr>
+                                <th class="col-1">ID do Usuário:</th>
+
+                            </tr>
+                            <tr>
+                                <th class="col-1">ID</th>
+                            </tr>
+                            <tr>
+                                <th class="col-2">Título <input type="text" class=""></th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Salvar alterações</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Botão Deletar -->
+    <div class="modal" id="exampleModal2" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Deletar</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <table class="table">
+                        <thead>
+
+                        </thead>
+                        <tbody id="dataTableBody">
+                            <!-- Linhas da tabela serão inseridas aqui -->
+                            <tr>
+                                <th class="col-1">ID do Usuário:</th>
+
+                            </tr>
+                            <tr>
+                                <th class="col-1">ID</th>
+                            </tr>
+                            <tr>
+                                <th class="col-2">Título</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger">Deletar</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        const btnEditar = `<button type="button" class="btn btn-warning text-light" data-bs-toggle="modal" data-bs-target="#exampleModal">Editar</button>`
+        const btnDeletar = `<button type="button" class="btn btn-danger text-light" data-bs-toggle="modal" data-bs-target="#exampleModal2">Deletar</button>`
+
+
+        function buscarUsuario() {
 
             document.querySelector("#ids").addEventListener('input', function () {
                 const ids = this.value;
@@ -88,6 +164,8 @@
                                 <td>${json.username}</td>
                                 <td>${json.email}</td>
                                 <td>${json.address.street}, ${json.address.suite}, ${json.address.city}</td>
+                                <td>${btnEditar}</td>
+                                <td>${btnDeletar}</td>
                             </tr>
                             `
                         } else {
