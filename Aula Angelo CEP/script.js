@@ -3,14 +3,46 @@ const cep = document.querySelector('#cep');
 const numero = document.querySelector('#numero');
 
 const preencherEstados = () => {
-  fetch('https://servicodados.ibge.gov.br/api/v1/localidades/estados')
-  .then(response => response.json())
-  .then(data => {
-    const estados = data;
-    const options = 
+    fetch('https://servicodados.ibge.gov.br/api/v1/localidades/estados?orderBy=nome')
+    .then(response => response.json())
+    .then(data => {
+      const estados = data;
+      const selectElement = document.querySelector('#uf');
+      console.log(selectElement)
 
-  })
+      estados.forEach(estados => {
+        const option = document.createElement('option');
+        option.value = estados.sigla;
+        option.innerHTML = estados.sigla;
+        selectElement.appendChild(option);
+      })
+
+      
+      const preencherMunicipios = () => {
+        const optionUf = document.querySelector('#uf').value
+        fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${optionUf}/municipios`)
+        .then(response => response.json())
+        .then(data => {
+          const municipio = data;
+          const selectElementLocalidade = document.querySelector('#localidade');
+      
+          municipio.forEach(municipio => {
+            const option = document.createElement('option');
+            option.value = municipio.nome;
+            option.innerHTML = municipio.nome;
+            selectElementLocalidade.appendChild(option);
+          })
+        })
+      }
+      addEventListener
+      preencherMunicipios();
+    })
 }
+
+
+
+
+preencherEstados();
 
 const consultaCep = async () => {
   let cepValue = cep.value;
