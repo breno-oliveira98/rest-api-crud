@@ -28,33 +28,39 @@ const atualizarBusca = () => {
     const campoBusca = document.getElementById('campoBusca');
     const resultados = document.getElementById('resultados');
     const pesquisa = campoBusca.value;
-    
+
     // Obter os resultados da pesquisa
     const resultadosPesquisa = buscarNomes(pesquisa);
-    
+
     // Limpar resultados anteriores
     resultados.innerHTML = '';
-    
+
     // Adicionar novos resultados
     resultadosPesquisa.forEach(aluno => {
-        const div = document.createElement('div');
-        div.className = 'pessoa';
-        div.textContent = `Nome: ${aluno.nome}, Idade: ${aluno.idade}`;
-        resultados.appendChild(div);
+        if (campoBusca.value.trim() === '') {
+            resultados.innerHTML = ''
+        } else {
+            const div = document.createElement('div');
+            div.className = 'pessoa';
+            div.innerHTML = `<strong>Nome:</strong> ${aluno.nome}, <strong>Idade:</strong> ${aluno.idade}`;
+            resultados.appendChild(div);
+            div.style.fontSize = "20px"
+        }
+
     });
 }
 
 const salvarDados = () => {
     const nome = document.getElementById('nome').value
     const idade = parseInt(document.getElementById('idade').value)
-    
+
     if (nome.trim() === '' || isNaN(idade)) {
         alert('Por favor, insira um nome válido e uma idade válida.');
         return;
     }
 
-    
-    fs36.push({nome, idade})
+
+    fs36.push({ nome, idade })
 
     console.log(fs36);
 
